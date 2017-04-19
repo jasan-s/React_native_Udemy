@@ -9,28 +9,28 @@ class FooterTabsContainer extends Component {
   static propTypes = {
     activeFooterTab: PropTypes.string.isRequired,
     setFooterTab: PropTypes.func.isRequired,
-    navigator: PropTypes.object.isRequired
+    navigator: PropTypes.object.isRequired,
   }
   state = {}
-  render () {
+  render() {
     return (
       <FooterTabs
-      activeFooterTab= {this.props.activeFooterTab}
-      setFooterTab = {this.props.setFooterTab}
-      navigator = {this.props.navigator}
-      userIcon= {this.state.userIcon}/>
+        activeFooterTab={this.props.activeFooterTab}
+        setFooterTab={this.props.setFooterTab}
+        navigator={this.props.navigator}
+        userIcon={this.state.userIcon} />
     )
   }
 }
 
-function mapStateToProps (state, props) {
+function mapStateToProps(state, props) {
   return {
     activeFooterTab: state.activeFooterTab,
-    navigator: props.navigator
+    navigator: props.navigator,
   }
 }
 
-function mapDispatchToProps (dispatch, props) {
+function mapDispatchToProps(dispatch, props) {
   return bindActionCreators(ActionCreators, dispatch)
 }
 

@@ -6,12 +6,12 @@ import { Leaderboard } from '~/components'
 export default class LeaderboardContainer extends Component {
   static propTypes = {
     openDrawer: PropTypes.func,
-    navigator: PropTypes.object.isRequired
+    navigator: PropTypes.object.isRequired,
   }
   state = {}
-  render () {
+  render() {
     return (
-      <Leaderboard openDrawer ={this.props.openDrawer}/>
+      <Leaderboard openDrawer={this.props.openDrawer} />
     )
   }
 }

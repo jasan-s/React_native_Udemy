@@ -1,4 +1,4 @@
-package com.reactmodoro;
+package com.reactnativeudemy;
 import com.oblador.vectoricons.VectorIconsPackage;
 import android.app.Application;
 

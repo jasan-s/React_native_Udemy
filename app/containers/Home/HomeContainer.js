@@ -6,22 +6,22 @@ import { Home } from '~/components'
 export default class HomeContainer extends Component {
   static propTypes = {
     openDrawer: PropTypes.func,
-    navigator: PropTypes.object.isRequired
+    navigator: PropTypes.object.isRequired,
   }
   state = {}
 
 // function set as a variable so can be passed as a variable
   handleToSettings = () => {
     this.props.navigator.push({
-      settings: true
+      settings: true,
     })
   }
 
-  render () {
+  render() {
     return (
       <Home
-      openDrawer ={this.props.openDrawer}
-      handleToSettings = {this.handleToSettings} />
+        openDrawer={this.props.openDrawer}
+        handleToSettings={this.handleToSettings} />
     )
   }
 }

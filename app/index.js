@@ -10,7 +10,7 @@ import { LOGGING_OUT } from './redux/modules/authentication'
 const appReducer = combineReducers(reducers)
 
 // this function(reducer) run at all action calls and checks if action type is LOGGING_OUT if so it sets state of all reducers to undefined, thus that sets them back to intial defined state
-function rootReducer (state, action) {
+function rootReducer(state, action) {
   if (action.type === LOGGING_OUT) {
     state = undefined
   }
@@ -21,14 +21,14 @@ function rootReducer (state, action) {
 const store = createStore(
   rootReducer,
   composeWithDevTools(
-    applyMiddleware(thunk)
-  )
+    applyMiddleware(thunk),
+  ),
 )
 
-export default function ReactModoro (props) {
+export default function ReactModoro(props) {
   return (
-    <Provider store = {store}>
-    <AppContainer />
+    <Provider store={store}>
+      <AppContainer />
     </Provider>
   )
 }

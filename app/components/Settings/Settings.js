@@ -16,12 +16,12 @@ Settings.propTypes = {
   onLogout: PropTypes.func.isRequired,
 }
 
-export default function Settings (props) {
+export default function Settings(props) {
   return (
     <View style={styles.container}>
       <ReactModoroNavbar
         title='Settings'
-        leftButton={<Close onPress={props.onBack}/>} />
+        leftButton={<Close onPress={props.onBack} />} />
       <View style={styles.sliderContainer}>
         <Text style={styles.titleText}>Timer Duration</Text>
         <Text style={styles.valueText}>{props.timerDuration}</Text>

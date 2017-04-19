@@ -1,9 +1,12 @@
 {
-	"name": "ReactModoro",
+	"name": "ReactnativeUdemy",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
+		"lint": "eslint app/. || exit 0",
+		"fix": "eslint --fix app/. || exit 0",
+		"fix:test": "eslint --fix test/. || exit 0",
 		"test": "jest"
 	},
 	"dependencies": {
@@ -28,8 +31,10 @@
 		"babel-preset-react-native": "1.9.1",
 		"babel-preset-react-native-stage-0": "^1.0.1",
 		"eslint": "^3.19.0",
+		"eslint-config-airbnb": "^14.1.0",
 		"eslint-config-standard": "^10.2.1",
 		"eslint-plugin-import": "^2.2.0",
+		"eslint-plugin-jsx-a11y": "^4.0.0",
 		"eslint-plugin-node": "^4.2.2",
 		"eslint-plugin-promise": "^3.5.0",
 		"eslint-plugin-react": "^6.10.3",

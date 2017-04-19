@@ -5,13 +5,13 @@ import { colors } from '~/styles'
 
 Close.propTypes = {
   onPress: PropTypes.func.isRequired,
-  style: PropTypes.object
+  style: PropTypes.object,
 }
 
-export default function Close (props) {
+export default function Close(props) {
   return (
-    <TouchableOpacity onPress ={props.onPress} style = {props.style}>
-    <Text style ={{color: colors.blue}}> Close </Text>
+    <TouchableOpacity onPress={props.onPress} style={props.style}>
+      <Text style={{ color: colors.blue }}> Close </Text>
     </TouchableOpacity>
   )
 }

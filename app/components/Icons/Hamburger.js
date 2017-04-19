@@ -7,18 +7,18 @@ import { colors } from '~/styles'
 Hamburger.propTypes = {
   size: PropTypes.number.isRequired,
   style: PropTypes.object,
-  onPress: PropTypes.func.isRequired
+  onPress: PropTypes.func.isRequired,
 }
 
 Hamburger.defaultProps = {
-  size: 30
+  size: 30,
 }
 
-export default function Hamburger (props) {
+export default function Hamburger(props) {
   return (
     <TouchableOpacity onPress={props.onPress} style={props.style}>
       <Icon
-        name= 'ios-menu-outline'
+        name='ios-menu-outline'
         size={props.size}
         color={colors.blue} />
     </TouchableOpacity>

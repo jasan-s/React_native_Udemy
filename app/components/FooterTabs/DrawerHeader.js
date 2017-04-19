@@ -6,7 +6,7 @@ DrawerHeader.propTypes = {
 
 }
 
-export default function DrawerHeader (props) {
+export default function DrawerHeader(props) {
   return (
     <View>
       <Text>

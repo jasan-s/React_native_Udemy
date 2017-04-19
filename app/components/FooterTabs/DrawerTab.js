@@ -8,20 +8,20 @@ DrawerTab.propTypes = {
   title: PropTypes.string.isRequired,
   selected: PropTypes.bool.isRequired,
   onPress: PropTypes.func.isRequired,
-  iconName: PropTypes.string.isRequired
+  iconName: PropTypes.string.isRequired,
 }
 
-export default function DrawerTab (props) {
+export default function DrawerTab(props) {
   const color = props.selected === true ? colors.blue : colors.primary
   return (
     <TouchableOpacity
-      onPress ={props.onPress}
+      onPress={props.onPress}
       style={styles.container}>
       <Icon
-      name= {props.iconName}
-      size={35}
-      color={color}/>
-      <Text style ={[{color: color}, styles.titleText]}> {props.title}</Text>
+        name={props.iconName}
+        size={35}
+        color={color} />
+      <Text style={[{ color }, styles.titleText]}> {props.title}</Text>
     </TouchableOpacity>
   )
 }
@@ -31,10 +31,10 @@ const styles = StyleSheet.create({
     margin: 10,
     marginLeft: 20,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   titleText: {
     fontSize: fontSizes.secondary,
-    marginLeft: 10
-  }
+    marginLeft: 10,
+  },
 })

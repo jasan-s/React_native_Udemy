@@ -6,7 +6,7 @@ const config = {
   authDomain: 'reactmodoro-5f0d8.firebaseapp.com',
   databaseURL: 'https://reactmodoro-5f0d8.firebaseio.com',
   storageBucket: 'reactmodoro-5f0d8.appspot.com',
-  messagingSenderId: '211434045508'
+  messagingSenderId: '211434045508',
 }
 firebase.initializeApp(config)
 
@@ -17,5 +17,5 @@ const facebookProvider = firebase.auth.FacebookAuthProvider
 export {
   ref,
   firebaseAuth,
-  facebookProvider
+  facebookProvider,
 }

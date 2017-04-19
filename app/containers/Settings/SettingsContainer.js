@@ -11,31 +11,31 @@ class SettingsContainer extends Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
     handleUnAuth: PropTypes.func.isRequired,
-    handleShowFlashNotification: PropTypes.func.isRequired
+    handleShowFlashNotification: PropTypes.func.isRequired,
   }
   state = {
     timerDuration: 20,
-    restDuration: 5
+    restDuration: 5,
   }
   handleTimerChange = (timerDuration) => {
-    this.setState({timerDuration})
+    this.setState({ timerDuration })
   }
   handleRestChange = (restDuration) => {
-    this.setState({restDuration})
+    this.setState({ restDuration })
   }
   handleTimerComplete = () => {
     console.log('Finished Sliding Timer')
-    this.props.handleShowFlashNotification({text: ' Timer Duration Saved!'})
+    this.props.handleShowFlashNotification({ text: ' Timer Duration Saved!' })
   }
   handleRestComplete = () => {
     console.log('Finished Sliding Rest Timer')
-    this.props.handleShowFlashNotification({text: 'Rest Duration Saved!'})
+    this.props.handleShowFlashNotification({ text: 'Rest Duration Saved!' })
   }
   handleLogout = () => {
     console.log('Logging Out!')
     this.props.handleUnAuth()
   }
-  render () {
+  render() {
     return (
       <Settings
         onBack={this.props.navigator.pop}
@@ -50,13 +50,13 @@ class SettingsContainer extends Component {
   }
 }
 
-function mapStateToProps (state, props) {
+function mapStateToProps(state, props) {
   return {
   }
 }
 
-function mapDispatchToProps (dispatch, props) {
-  return bindActionCreators({...ActionCreators, ...flashNotificationActionCreators}, dispatch)
+function mapDispatchToProps(dispatch, props) {
+  return bindActionCreators({ ...ActionCreators, ...flashNotificationActionCreators }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingsContainer)

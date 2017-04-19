@@ -18,7 +18,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>ReactModoro</string>
+	<string>ReactnativeUdemy</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -45,7 +45,7 @@
 	<key>FacebookAppID</key>
 	<string>401277636914831</string>
 	<key>FacebookDisplayName</key>
-	<string>ReactModoro</string>
+	<string>ReactnativeUdemy</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

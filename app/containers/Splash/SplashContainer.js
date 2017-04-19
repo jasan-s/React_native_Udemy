@@ -8,22 +8,22 @@ import * as ActionCreators from '~/redux/modules/authentication'
 
 class SplashContainer extends Component {
   static propTypes = {
-    handleAuthWithFirebase: PropTypes.func.isRequired
+    handleAuthWithFirebase: PropTypes.func.isRequired,
   }
 
   handleSignin = () => {
     // Attempt a login using the Facebook login dialog asking for default permissions.
     LoginManager.logInWithReadPermissions(['public_profile']).then(
-      function (result) {
+      (result) => {
         if (result.isCancelled) {
           alert('Login cancelled')
         } else {
-          alert('Login success with permissions: ' + result.grantedPermissions.toString())
+          alert(`Login success with permissions: ${result.grantedPermissions.toString()}`)
         }
       },
-      function (error) {
-        alert('Login fail with error: ' + error)
-      }
+      (error) => {
+        alert(`Login fail with error: ${error}`)
+      },
     )
   }
 
@@ -39,20 +39,20 @@ class SplashContainer extends Component {
     }
   }
 
-  render () {
+  render() {
     return (
-    <Splash
-    onLoginFinished = {this.handleOnLoginFinished}/>
+      <Splash
+        onLoginFinished={this.handleOnLoginFinished} />
     )
   }
 }
 
-function mapStateToProps (state, props) {
+function mapStateToProps(state, props) {
   return {
   }
 }
 
-function mapDispatchToProps (dispatch, props) {
+function mapDispatchToProps(dispatch, props) {
   return bindActionCreators(ActionCreators, dispatch)
 }
 

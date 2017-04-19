@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import PropTypes from 'prop-types'
 import {
   StyleSheet,
@@ -6,26 +6,25 @@ import {
   View,
   Button,
   Dimensions,
-  Image
-} from 'react-native';
-import styled from 'styled-components/native';
+  Image,
+} from 'react-native'
+import styled from 'styled-components/native'
 import { LoginButton } from 'react-native-fbsdk'
 
 const { height, width } = Dimensions.get('window')
 
-export default function Splash (props) {
-    return (
-      <StyledView>
-       <StyledImage
-        source = {require('../../images/basketball.png')} />
-        <StyledText>Already Have an Account?
+export default function Splash(props) {
+  return (
+    <StyledView>
+      <StyledImage
+        source={require('../../images/basketball.png')} />
+      <StyledText>Already Have an Account?
         </StyledText>
-        <StyledLoginButton
-        onLoginFinished = {props.onLoginFinished}
-        />
-        <StyledText color = 'tomato'> Don't Worry We never post anything!</StyledText>
-      </StyledView>
-    );
+      <StyledLoginButton
+        onLoginFinished={props.onLoginFinished} />
+      <StyledText color='tomato'> Don't Worry We never post anything!</StyledText>
+    </StyledView>
+  )
 }
 
 const StyledLoginButton = styled(LoginButton)`

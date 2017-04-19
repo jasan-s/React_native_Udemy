@@ -8,61 +8,62 @@ import { colors } from '~/styles'
 export default class PreSplash extends Component {
   static propTypes = {}
   state = {
-    rotation: new Animated.Value(0)
+    rotation: new Animated.Value(0),
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.spin()
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     window.clearInterval(this.interval)
   }
 
-  spin () {
+  spin() {
     this.interval = setInterval(() => {
       Animated.sequence([
-        Animated.timing(this.state.rotation, {toValue: 1, duration: 420}),
-        Animated.timing(this.state.rotation, {toValue: 0, duration: 20})
+        Animated.timing(this.state.rotation, { toValue: 1, duration: 420 }),
+        Animated.timing(this.state.rotation, { toValue: 0, duration: 20 }),
       ]).start()
     }, 1000)
   }
 
-  getTransform () {
+  getTransform() {
     return {
       transform: [
         {
           rotate: this.state.rotation.interpolate({
             inputRange: [0, 1],
-            outputRange: ['0deg', '360deg']
-          })
-        }
-      ]
+            outputRange: ['0deg', '360deg'],
+          }),
+        },
+      ],
     }
   }
 
-  render () {
+  render() {
     return (
       <StyledView>
-      <AnimatingBall animation = 'rotate' iterationCount='infinite' easing= 'ease-in-out'
-       source={require('../../images/basketball.png')} />
-       <StyledText color = {colors.primary}> Loading...</StyledText>
+        <AnimatingBall
+          animation='rotate' iterationCount='infinite' easing='ease-in-out'
+          source={require('../../images/basketball.png')} />
+        <StyledText color={colors.primary}> Loading...</StyledText>
       </StyledView>
     )
   }
 }
 
-  const StyledView = styled.View`
+const StyledView = styled.View`
     flex:1;
     justify-content: center;
     align-items: center;
   `
 
-  const StyledImage = styled.Image`
+const StyledImage = styled.Image`
   resize-mode: contain;
   height: 10%;
   `
-  const StyledText = styled.Text`
+const StyledText = styled.Text`
   color:${props => props.color};
   `
-  const AnimatingBall = Animatable.createAnimatableComponent(StyledImage)
+const AnimatingBall = Animatable.createAnimatableComponent(StyledImage)

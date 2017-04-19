@@ -16,36 +16,34 @@ export default class FlashNotification extends Component {
   static defaultProps = {
     permanent: false,
     length: 1500,
-    location: 'top'
+    location: 'top',
   }
   state = {
     width: new Animated.Value(50),
     opacity: new Animated.Value(0.7),
-    textOpacity: new Animated.Value(0)
+    textOpacity: new Animated.Value(0),
   }
-  componentDidMount () {
-    Animated.spring(this.state.width, {toValue: NOTIFICATION_WIDTH}).start()
-    Animated.timing(this.state.textOpacity, {toValue: 1, duration: 1000}).start()
+  componentDidMount() {
+    Animated.spring(this.state.width, { toValue: NOTIFICATION_WIDTH }).start()
+    Animated.timing(this.state.textOpacity, { toValue: 1, duration: 1000 }).start()
 
     if (this.props.permanent === false) {
       setTimeout(() => {
-        Animated.timing(this.state.opacity, {toValue: 0, duration: 1000})
+        Animated.timing(this.state.opacity, { toValue: 0, duration: 1000 })
           .start(this.props.onHideNotification)
       }, this.props.length)
     }
   }
-  getStyle = () => {
-    return {
-      width: this.state.width,
-      opacity: this.state.opacity,
-      top: this.props.location === 'top' ? 60 : undefined,
-      bottom: this.props.location === 'top' ? undefined : 60
-    }
-  }
-  render () {
+  getStyle = () => ({
+    width: this.state.width,
+    opacity: this.state.opacity,
+    top: this.props.location === 'top' ? 60 : undefined,
+    bottom: this.props.location === 'top' ? undefined : 60,
+  })
+  render() {
     return (
       <Animated.View style={[styles.container, this.getStyle()]}>
-        <Animated.Text style={[styles.text, {opacity: this.state.textOpacity}]}>
+        <Animated.Text style={[styles.text, { opacity: this.state.textOpacity }]}>
           {this.props.text}
         </Animated.Text>
       </Animated.View>
@@ -62,9 +60,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 10,
-    left: (width - NOTIFICATION_WIDTH) / 2
+    left: (width - NOTIFICATION_WIDTH) / 2,
   },
   text: {
-    color: '#fff'
-  }
+    color: '#fff',
+  },
 })

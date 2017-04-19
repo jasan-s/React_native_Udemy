@@ -5,6 +5,6 @@
  */
 
 import {AppRegistry} from 'react-native'
-import ReactModoro from './app/index'
+import ReactnativeUdemy from './app/index'
 
-AppRegistry.registerComponent('ReactModoro', () => ReactModoro)
+AppRegistry.registerComponent('ReactnativeUdemy', () => ReactnativeUdemy)
