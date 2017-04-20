@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { View, StyleSheet, Text, Image, Dimensions} from 'react-native'
-import Card from './Card'
-import CardSection from './CardSection'
-import Button from './Button'
+import { Button, Card, CardSection } from '~/components'
 import { fontSizes } from '~/styles'
 const { height, width } = Dimensions.get('window') // get the device width and height
 

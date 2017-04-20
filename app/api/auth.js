@@ -10,6 +10,14 @@ export function authWithToken(accesToken) {
     .signInWithCredential(facebookProvider.credential(accesToken))
 }
 
+export function logInWithEmailPassword(email, password) {
+  return firebaseAuth.signInWithEmailAndPassword(email, password)
+}
+
+export function signUpWithEmailPassword(email, password) {
+  return firebaseAuth.createUserWithEmailAndPassword(email, password)
+}
+
 export function updateUser(user) {
   return ref.child(`users/${user.uid}`).set(user)
 }

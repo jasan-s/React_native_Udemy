@@ -1,4 +1,4 @@
-import { getAccessToken, authWithToken, updateUser, logOut } from '~/api/auth'
+import { getAccessToken, authWithToken, updateUser, logOut, logInWithEmailPassword, signUpWithEmailPassword } from '~/api/auth'
 
 const AUTHENTICATING = 'AUTHENTICATING'
 const NOT_AUTHED = 'NOT_AUTHED'
@@ -30,8 +30,29 @@ function isAuthed(uid) {
   }
 }
 
+export function handleAuthWithEmailPassword(email, password) {
+  return async (dispatch) => {
+    dispatch(authenticating())
+    try {
+      const user = await logInWithEmailPassword(email, password)
+      console.warn('Logged In User: ', user)
+      return user
+    } catch (error) {
+      console.warn('Error in Login handleAuthWithEmailPassword: ', error.message)
+      try {
+        const user = await signUpWithEmailPassword(email, password)
+        return user
+        console.warn('Signed Up User: ', user)
+      } catch (error2) {
+        dispatch(notAuthed())
+        console.warn('Error in Signing up handleAuthWithEmailPassword: ', error2.message)
+      }
+    }
+  }
+}
+
 export function handleAuthWithFirebase() {
-  return function (dispatch, getState) {
+  return (dispatch, getState) => {
     dispatch(authenticating())
     return getAccessToken()
       .then(({ accessToken }) => {
@@ -42,8 +63,9 @@ export function handleAuthWithFirebase() {
   }
 }
 
+
 export function onAuthChange(user) {
-  return function (dispatch) {
+  return (dispatch) => {
     if (!user) {
       dispatch(notAuthed())
     } else {
@@ -59,7 +81,7 @@ export function onAuthChange(user) {
 }
 
 export function handleUnAuth() {
-  return function (dispatch) {
+  return (dispatch) => {
     logOut()
     dispatch(loggingOut())
   }

@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as ActionCreators from '~/redux/modules/authentication'
 import { firebaseAuth } from '~/config/constants'
-import { Header } from '~/components'
-import { AlbumListContainer } from '~/containers'
+import { Header, Loading } from '~/components'
+import { AlbumListContainer, AuthContainer } from '~/containers'
 
 class AppContainer extends Component {
   static propTypes = {
@@ -17,7 +17,7 @@ class AppContainer extends Component {
 
   componentDidMount() {
     firebaseAuth.onAuthStateChanged((user) => {
-      // console.warn('firebase user: ', user)
+      console.warn('firebase user: ', user)
       this.props.onAuthChange(user)
     })
   }
@@ -25,8 +25,12 @@ class AppContainer extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Header />
-        <AlbumListContainer />
+        {this.props.isAuthenticating
+          ? <Loading />
+        : <View>
+          <Header title={'Authentication'} />
+          <AuthContainer />
+        </View>}
       </View>
     )
   }

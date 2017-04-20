@@ -1,10 +1,10 @@
 import React from 'react'
-import { AppContainer } from './containers'
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import * as reducers from './redux'
 import { composeWithDevTools } from 'remote-redux-devtools'
+import { AppContainer } from './containers'
 import { LOGGING_OUT } from './redux/modules/authentication'
 
 const appReducer = combineReducers(reducers)
@@ -25,7 +25,7 @@ const store = createStore(
   ),
 )
 
-export default function ReactModoro(props) {
+export default function ReactnativeUdemy(props) {
   return (
     <Provider store={store}>
       <AppContainer />

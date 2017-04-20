@@ -18,6 +18,7 @@ CardSection.propTypes = {
 const styles = StyleSheet.create({
   containerStyle: {
     borderBottomWidth: 1,
+    borderTopWidth: 0,
     padding: 5,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',

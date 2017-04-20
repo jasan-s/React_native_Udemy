@@ -11,18 +11,18 @@ export default function Header(props) {
   return (
     <StyledView style={container}>
       <StyledText >
-        {props.header}
+        {props.title}
       </StyledText>
     </StyledView>
   )
 }
 
 Header.propTypes = {
-  header: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 }
 
 Header.defaultProps = {
-  header: 'Album Title',
+  title: 'Album Title',
 }
 
 const StyledView = styled.View`
