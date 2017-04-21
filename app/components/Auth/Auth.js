@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { StyleSheet, View } from 'react-native'
 import { Card, CardSection, Button, TextFieldInput, Loading } from '~/components'
 
-export default function Auth (props) {
+export default function Auth(props) {
   return (
     <View>
-    {props.isAuthed
+      {props.isAuthed
       ? <Card>
         <CardSection>
           {props.isAuthenticating

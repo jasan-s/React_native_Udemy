@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { fontSizes, colors } from '~/styles'
 
-export default function Button (props) {
-  const { containerStyle, labelStyle} = styles
+export default function Button(props) {
+  const { containerStyle, labelStyle } = styles
   const { handleClick } = props
   return (
     <TouchableOpacity onPress={handleClick} style={containerStyle}>

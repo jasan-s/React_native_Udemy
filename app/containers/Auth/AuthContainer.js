@@ -22,7 +22,7 @@ class AuthContainer extends Component {
     console.log('Sign in Button CLicked')
     const { email, password } = this.state
     this.props.handleAuthWithEmailPassword(email, password).then((user) => {
-      if(user) {
+      if (user) {
         this.setState({ email: '', password: '' })
       }
     })
@@ -52,14 +52,14 @@ class AuthContainer extends Component {
   }
 }
 
-function mapStateToProps ({ authentication , isAuthed}, props) {
+function mapStateToProps({ authentication, isAuthed }, props) {
   return {
     isAuthenticating: authentication.isAuthenticating,
     isAuthed: authentication.isAuthed,
   }
 }
 
-function mapDispatchToProps (dispatch, props) {
+function mapDispatchToProps(dispatch, props) {
   return bindActionCreators(ActionCreators, dispatch)
 }
 

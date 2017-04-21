@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 import * as ActionCreators from '~/redux/modules/authentication'
 import { firebaseAuth } from '~/config/constants'
 import { Header, Loading } from '~/components'
-import { AlbumListContainer, AuthContainer } from '~/containers'
+import { AlbumListContainer, AuthContainer, LibraryListViewContainer } from '~/containers'
 
 class AppContainer extends Component {
   static propTypes = {
@@ -27,9 +27,9 @@ class AppContainer extends Component {
       <View style={{ flex: 1 }}>
         {this.props.isAuthenticating
           ? <Loading />
-        : <View>
-          <Header title={'Authentication'} />
-          <AuthContainer />
+        : <View style={{ flex: 1 }}>
+          <Header title={'LibraryList'} />
+          <LibraryListViewContainer />
         </View>}
       </View>
     )

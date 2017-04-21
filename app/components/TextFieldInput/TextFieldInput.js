@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { View, StyleSheet, Text, TextInput } from 'react-native'
 
-export default function TextFieldInput (props) {
+export default function TextFieldInput(props) {
   const { containerStyle, textInputStyle, textTitleStyle } = styles
   return (
     <View style={containerStyle}>
@@ -11,8 +11,8 @@ export default function TextFieldInput (props) {
         value={props.value}
         placeholder={props.placeholder}
         autoCorrect={false}
-        secureTextEntry = {props.secureTextEntry || false}
-        onChangeText={props.handleUserInput} style={textInputStyle}/>
+        secureTextEntry={props.secureTextEntry || false}
+        onChangeText={props.handleUserInput} style={textInputStyle} />
     </View>
   )
 }
@@ -23,7 +23,7 @@ TextFieldInput.propTypes = {
 
 TextFieldInput.defaultProps = {
   title: 'User Input',
-  placeholder: 'placeholder'
+  placeholder: 'placeholder',
 }
 
 const styles = StyleSheet.create({

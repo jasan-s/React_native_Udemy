@@ -37,7 +37,8 @@ export default class AlbumListContainer extends Component {
     return (
       <ScrollView>
         {this.state.albums.map(album =>
-          <AlbumList key={album.title} album={album}
+          <AlbumList
+            key={album.title} album={album}
             handleClick={url => this.handleClick(url)} />,
           )
         }

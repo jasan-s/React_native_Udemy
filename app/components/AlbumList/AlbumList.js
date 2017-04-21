@@ -5,7 +5,7 @@ import AlbumDetail from './AlbumDetail'
 
 export default function AlbumList(props) {
   return (
-    <AlbumDetail album={props.album} handleClick={() => props.handleClick(props.album.url)}/>
+    <AlbumDetail album={props.album} handleClick={() => props.handleClick(props.album.url)} />
   )
 }
 

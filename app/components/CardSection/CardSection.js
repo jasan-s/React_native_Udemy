@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { View, StyleSheet } from 'react-native'
 
-export default function CardSection (props) {
+export default function CardSection(props) {
   const { containerStyle } = styles
   return (
     <View style={containerStyle} >

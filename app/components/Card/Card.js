@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native'
 import CardSection from './Card'
 // import styled from 'styled-components/native'
 
-export default function Card (props) {
+export default function Card(props) {
   const { containerStyle } = styles
   return (
     <View style={containerStyle} >
