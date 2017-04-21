@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { View, StyleSheet, Text, TouchableOpacity, LayoutAnimation } from 'react-native'
+import { View, StyleSheet, Text, TouchableOpacity, LayoutAnimation, Platform, UIManager } from 'react-native'
 import { CardSection, LibraryListItem } from '~/components'
 import { connect } from 'react-redux'
 
 class LibraryListItemContainer extends Component {
+
+  constructor() {
+    super()
+    // required to use layout animation on android
+    if (Platform.OS === 'android') {
+      UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true)
+    }
+  }
   // animates any layout change
   componentWillUpdate() {
-    LayoutAnimation.spring()
+    LayoutAnimation.linear()
   }
 
   render() {
