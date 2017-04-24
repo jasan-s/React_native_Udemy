@@ -30,5 +30,6 @@
     "react/sort-comp": 2,
     "import/no-unresolved": [2, { ignore: ['\~*'] }],
     "no-use-before-define": 0,
+    "react/forbid-prop-types": 0,
   },
 }

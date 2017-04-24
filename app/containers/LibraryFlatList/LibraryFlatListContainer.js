@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { View, Text, ListView, FlatList } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
 import { LibraryListItemContainer } from '~/containers'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as ActionCreators from '~/redux/modules/LibraryList'
 
-class LibraryListViewContainer extends Component {
+class LibraryFlatListContainer extends Component {
 
   static propTypes = {
     libraryList: PropTypes.array,
@@ -17,19 +17,6 @@ class LibraryListViewContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {}
-    this.createDataSource(props.libraryList)
-  }
-
-  componentWillReceiveProps(props) {
-    this.createDataSource(props.libraryList)
-  }
-
-  // listView boilerPlate datasource defined with our data
-  createDataSource = (data) => {
-    const ds = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2,
-    })
-    this.dataSource = ds.cloneWithRows(data)
   }
 
   handleLibrarySelected = (id) => {
@@ -47,10 +34,13 @@ class LibraryListViewContainer extends Component {
   )
 
   render() {
+        console.log(this.props.libraryList)
+
     return (
-      <ListView
-        dataSource={this.dataSource}
-        renderRow={library => this.renderRow(library)} />
+      <FlatList
+        data={this.props.libraryList}
+        renderItem={({item}) => this.renderRow(item) }
+        keyExtractor={item => item.title} />
     )
   }
 }
@@ -67,4 +57,4 @@ function mapDispatchToProps(dispatch, props) {
   return bindActionCreators(ActionCreators, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LibraryListViewContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(LibraryFlatListContainer)

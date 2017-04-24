@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 import { Card, CardSection, Button, TextFieldInput, Loading } from '~/components'
 
 export default function Auth(props) {
+  const { errorStyle } = styles
   return (
     <View>
       {props.isAuthed
@@ -17,7 +18,14 @@ export default function Auth(props) {
       </Card>
     : <Card>
       <CardSection>
-        <TextFieldInput title={'Email : '} placeholder={'user@gmail.com'} value={props.email} handleUserInput={props.handleUserInputEmail} />
+        <TextFieldInput
+          title={'Email : '}
+          placeholder={'user@gmail.com'}
+          value={props.email}
+          keyboardType={'email-address'}
+          returnKeyType={'next'}
+          autoFocus={true}
+          handleUserInput={props.handleUserInputEmail} />
       </CardSection>
       <CardSection>
         <TextFieldInput
@@ -26,7 +34,9 @@ export default function Auth(props) {
           placeholder={'123456'} value={props.password}
           handleUserInput={props.handleUserInputPassword} />
       </CardSection>
-      <CardSection />
+      <CardSection>
+        <Text style={errorStyle}>{props.error}</Text>
+      </CardSection>
       <CardSection>
         {props.isAuthenticating
           ? <Loading />
@@ -43,6 +53,9 @@ Auth.propTypes = {
 }
 
 const styles = StyleSheet.create({
-
+  errorStyle: {
+    color: 'tomato',
+    textAlign: 'center',
+  },
 })
 

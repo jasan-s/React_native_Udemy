@@ -12,6 +12,9 @@ export default function TextFieldInput(props) {
         placeholder={props.placeholder}
         autoCorrect={false}
         secureTextEntry={props.secureTextEntry || false}
+        keyboardType={props.keyboardType}
+        returnKeyType={props.returnKeyType}
+        autoFocus={props.autoFocus || false}
         onChangeText={props.handleUserInput} style={textInputStyle} />
     </View>
   )
@@ -24,6 +27,8 @@ TextFieldInput.propTypes = {
 TextFieldInput.defaultProps = {
   title: 'User Input',
   placeholder: 'placeholder',
+  keyboardType: 'default',
+  returnKeyType: 'next',
 }
 
 const styles = StyleSheet.create({

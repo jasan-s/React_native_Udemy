@@ -8,22 +8,21 @@ import * as ActionCreators from '~/redux/modules/authentication'
 
 class AuthContainer extends Component {
   static propTypes = {}
-  state = { email: '', password: '' }
 
   handleUserInputEmail = (email) => {
-    this.setState({ email })
+    this.props.userEmailInput(email)
   }
 
   handleUserInputPassword = (password) => {
-    this.setState({ password })
+    this.props.userPasswordInput(password)
   }
 
   handleSignInButtonPress = () => {
     console.log('Sign in Button CLicked')
-    const { email, password } = this.state
+    const { email, password } = this.props
     this.props.handleAuthWithEmailPassword(email, password).then((user) => {
       if (user) {
-        this.setState({ email: '', password: '' })
+        // user exists in firebase do something now
       }
     })
   }
@@ -35,27 +34,32 @@ class AuthContainer extends Component {
 
 
   render() {
-    console.log(this.state.email)
+    // console.log(this.props.email)
     return (
       <View>
         <Auth
           handleUserInputEmail={email => this.handleUserInputEmail(email)}
-          email={this.state.email}
+          email={this.props.email}
           handleUserInputPassword={password => this.handleUserInputPassword(password)}
-          password={this.state.password}
+          password={this.props.password}
           handleSignInButtonPress={() => this.handleSignInButtonPress()}
           handleSignOutButtonPress={() => this.handleSignOutButtonPress()}
           isAuthenticating={this.props.isAuthenticating}
-          isAuthed={this.props.isAuthed} />
+          isAuthed={this.props.isAuthed}
+          error={this.props.error} />
       </View>
     )
   }
 }
 
-function mapStateToProps({ authentication, isAuthed }, props) {
+function mapStateToProps({ authentication }, props) {
+  const { isAuthenticating, isAuthed, email, password, error } = authentication
   return {
-    isAuthenticating: authentication.isAuthenticating,
-    isAuthed: authentication.isAuthed,
+    isAuthenticating,
+    isAuthed,
+    email,
+    password,
+    error,
   }
 }
 

@@ -4,16 +4,13 @@ import { View, StyleSheet, Text, TouchableOpacity, LayoutAnimation, Platform, UI
 import { CardSection, LibraryListItem } from '~/components'
 import { connect } from 'react-redux'
 
-class LibraryListItemContainer extends Component {
-
-  constructor() {
-    super()
     // required to use layout animation on android
-    if (Platform.OS === 'android') {
-      UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true)
-    }
-  }
-  // animates any layout change
+if (Platform.OS === 'android') {
+  UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true)
+}
+
+class LibraryListItemContainer extends Component {
+// animates any layout change can use spring easeIneaseOut or linear
   componentWillUpdate() {
     LayoutAnimation.linear()
   }
