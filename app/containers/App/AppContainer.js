@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 import * as ActionCreators from '~/redux/modules/authentication'
 import { firebaseAuth } from '~/config/constants'
 import { Header, Loading } from '~/components'
-import { AlbumListContainer, AuthContainer } from '~/containers'
+import { AlbumListContainer, AuthContainer, TabBarContainer } from '~/containers'
 import { addNavigationHelpers } from 'react-navigation';
 import { Root, AppNavigator } from '~/config/routing'
 

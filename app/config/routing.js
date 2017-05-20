@@ -14,7 +14,7 @@ import AuthContainer from '~/containers/Auth/AuthContainer'
 import LibraryListViewContainer from '~/containers/LibraryListView/LibraryListViewContainer'
 import LibraryFlatListContainer from '~/containers/LibraryFlatList/LibraryFlatListContainer'
 import EmployeeCreateFormContainer from '~/containers/EmployeeCreateForm/EmployeeCreateFormContainer'
-import InteractableContainer from '~/containers/Interactable/InteractableContainer'
+// import InteractableContainer from '~/containers/Interactable/InteractableContainer'
 
 // // sceneStyle is global style
 // export function Root(props) {
@@ -53,7 +53,7 @@ export const Feed = StackNavigator({
     navigationOptions: {
     },
   },
-},)
+})
 
 const routeConfigurationB = {
   TAB_A: { screen: AuthContainer },
@@ -62,7 +62,7 @@ const routeConfigurationB = {
 
 const tabBarConfigurationB = {
   tabBarPosition: 'bottom',
-  animationEnabled: true,
+  animationEnabled: false,
   swipeEnabled: false,
   tabBarOptions:{
     indicatorStyle: {height: 4}
@@ -72,6 +72,9 @@ const tabBarConfigurationB = {
 
 export const AppNavigatorB = TabNavigator(routeConfigurationB,tabBarConfigurationB)
 
+AppNavigatorB.navigationOptions = {
+  header: null,
+}
 export const Root = StackNavigator({
   Tabs: {
     screen: AppNavigatorB,
@@ -80,7 +83,7 @@ export const Root = StackNavigator({
 
 const routeConfiguration = {
   Profile: { screen: Root },
-  Handshake: { screen: InteractableContainer },
+  Handshake: { screen: LibraryListViewContainer },
   contacts: { screen: LibraryListViewContainer },
 }
 

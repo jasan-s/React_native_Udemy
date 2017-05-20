@@ -1,7 +1,70 @@
-import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { TabViewAnimated, TabBar } from 'react-native-tab-view';
+import React, { Component } from 'react'
+import { View, StyleSheet, Dimensions } from 'react-native'
+import { TabViewAnimated, TabBar } from 'react-native-tab-view'
 import { LibraryFlatListContainer } from '~/containers'
+import TabBarBottom from './TabBarBottom'
+import Icon from 'react-native-vector-icons/Ionicons'
+
+const initialLayout = {
+  height: 0,
+  width: Dimensions.get('window').width,
+}
+
+export default class TabBarContainer extends Component {
+  state = {
+    index: 1,
+    routes: [
+      { key: '1', icon: 'md-person' },
+      { key: '2', icon: 'md-infinite' },
+      { key: '3', icon: 'ios-people' },
+    ],
+  };
+
+  handleChangeTab = (index) => {
+    this.setState({ index })
+
+  };
+
+  renderHeader = props => <TabBar {...props} style={styles.tabBar} scrollEnabled={false} renderIcon={this.renderIcon} />;
+
+  renderScene = ({ route }) => {
+    switch (route.key) {
+      case '1':
+        return <TabBarBottom />
+      case '2':
+        return (
+          <View style={[styles.page, { backgroundColor: '#f37735' }]}>
+            <View style={styles.forwardArrow}>
+              <Icon
+                name='ios-arrow-forward'
+                size={80}
+                color='white' />
+            </View>
+          </View>)
+      case '3':
+        return <LibraryFlatListContainer />
+      default:
+        return null
+    }
+  };
+
+  renderIcon = ({ route }) => <Icon
+    name={route.icon}
+    size={30}
+    color='white' />
+
+  render() {
+    return (
+      <TabViewAnimated
+        style={styles.container}
+        navigationState={this.state}
+        renderScene={this.renderScene}
+        renderHeader={this.renderHeader}
+        onRequestChangeTab={this.handleChangeTab}
+        initialLayout={initialLayout} />
+    )
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -12,48 +75,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
-
-export default class TabViewExample extends Component {
-  state = {
-    index: 0,
-    routes: [
-      { key: '1', title: 'First' },
-      { key: '2', title: 'Second' },
-      { key: '3', title: 'third' },
-    ],
-  };
-
-  _handleChangeTab = (index) => {
-    this.setState({ index });
-  };
-
-  _renderHeader = (props) => {
-    return <TabBar {...props} />;
-  };
-
-  _renderScene = ({ route }) => {
-    switch (route.key) {
-    case '1':
-      return <LibraryFlatListContainer />
-    case '2':
-      return <LibraryFlatListContainer />
-    case '3':
-      return <LibraryFlatListContainer />
-    default:
-      return null;
-    }
-  };
-
-  render() {
-    return (
-      <TabViewAnimated
-        style={styles.container}
-        navigationState={this.state}
-        renderScene={this._renderScene}
-        renderHeader={this._renderHeader}
-        onRequestChangeTab={this._handleChangeTab}
-      />
-    );
-  }
-}
+  tabBar: {
+    paddingTop: 12,
+  },
+  forwardArrow: {
+    position: 'absolute',
+    bottom: 55,
+    right: 55,
+  },
+})
