@@ -60,14 +60,14 @@ export function handleAuthWithEmailPassword(email, password) {
     dispatch(authenticating())
     try {
       const user = await logInWithEmailPassword(email, password)
-      console.warn('Logged In User: ', user)
-      Actions.LibraryList()
+      // console.warn('Logged In User: ', user)
+      // Actions.LibraryList()
       return user
     } catch (error) {
       console.warn('Error in Login handleAuthWithEmailPassword: ', error.message)
       try {
         const user = await signUpWithEmailPassword(email, password)
-        Actions.LibraryList()
+        // Actions.LibraryList()
         return user
         console.warn('Signed Up User: ', user)
       } catch (error2) {
@@ -84,7 +84,7 @@ export function handleAuthWithFirebase() {
     dispatch(authenticating())
     return getAccessToken()
       .then(({ accessToken }) => {
-        console.warn('accessToken: ', accessToken)
+        // console.warn('accessToken: ', accessToken)
         authWithToken(accessToken)
       })
       .catch(error => console.warn('Error in handleAuthWithFirebase: ', error.message))
@@ -106,7 +106,7 @@ export function onAuthChange(user) {
       }).then(() => {
         dispatch(isAuthed(uid))
         // Route change using react-native-router-flux
-        Actions.main()
+        // Actions.main()
       })
     }
   }

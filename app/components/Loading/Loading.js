@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { View, StyleSheet, Text, ActivityIndicator } from 'react-native'
 
 export default function Loading(props) {
-  const { containerStyle } = styles
+  const { containerstyle } = styles
   return (
-    <View style={containerStyle} >
+    <View style={containerstyle} >
       <ActivityIndicator size={props.size} />
     </View>
   )
@@ -19,7 +19,7 @@ Loading.defaultProps = {
   size: 'large',
 }
 const styles = StyleSheet.create({
-  containerStyle: {
+  containerstyle: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

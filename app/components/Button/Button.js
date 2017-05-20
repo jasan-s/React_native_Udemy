@@ -4,10 +4,10 @@ import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { fontSizes, colors } from '~/styles'
 
 export default function Button(props) {
-  const { containerStyle, labelStyle } = styles
+  const { containerstyle, labelStyle } = styles
   const { handleClick } = props
   return (
-    <TouchableOpacity onPress={handleClick} style={containerStyle}>
+    <TouchableOpacity onPress={handleClick} style={containerstyle}>
       <Text style={labelStyle}>
         {props.title}
       </Text>
@@ -23,7 +23,7 @@ Button.defaultProps = {
 }
 
 const styles = StyleSheet.create({
-  containerStyle: {
+  containerstyle: {
     flex: 1,
     backgroundColor: 'palevioletred',
     flexDirection: 'row',

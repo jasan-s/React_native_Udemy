@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { EmployeeCreateForm } from '~/components'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -17,12 +17,26 @@ class EmployeeCreateFormContainer extends Component {
   }
 
   render() {
+    // access navigation dynamic params
+    const { state } = this.props.navigation
+    console.log('WWWWWWWW: ', state)
     return (
+      <View>
       <EmployeeCreateForm
         handleEmployeeInputChange={(field, value) => this.props.employeeInputChange(field, value)}
         employeeName={this.props.name}
         employeePhone={this.props.phone}
         employeeShift={this.props.shift} />
+          <TouchableOpacity
+          onPress={ () => this.props.navigation.goBack() }
+          style={{
+            padding:20,
+            borderRadius:20,
+            backgroundColor:'yellow',
+            marginTop:20
+          }}>
+        </TouchableOpacity>
+        </View>
     )
   }
 }

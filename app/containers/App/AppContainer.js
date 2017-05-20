@@ -7,7 +7,8 @@ import * as ActionCreators from '~/redux/modules/authentication'
 import { firebaseAuth } from '~/config/constants'
 import { Header, Loading } from '~/components'
 import { AlbumListContainer, AuthContainer } from '~/containers'
-import { Routes } from '~/routes'
+import { addNavigationHelpers } from 'react-navigation';
+import { Root, AppNavigator } from '~/config/routing'
 
 class AppContainer extends Component {
   static propTypes = {
@@ -18,7 +19,7 @@ class AppContainer extends Component {
 
   componentDidMount() {
     firebaseAuth.onAuthStateChanged((user) => {
-      console.warn('firebase user: ', user)
+      // console.warn('firebase user: ', user)
       this.props.onAuthChange(user)
     })
   }
@@ -28,8 +29,8 @@ class AppContainer extends Component {
       <View style={{ flex: 1 }}>
         {this.props.isAuthenticating
           ? <Loading />
-        : <View style={{ flex: 1 }}>
-          <Routes />
+        : <View style={{ flex: 1}}>
+          <AppNavigator />
         </View>}
       </View>
     )
@@ -40,11 +41,16 @@ function mapStateToProps({ authentication }) {
   return {
     isAuthenticating: authentication.isAuthenticating,
     isAuthed: authentication.isAuthed,
+    // nav: nav,
   }
 }
 
 function mapDispatchToProps(dispatch, props) {
-  return bindActionCreators(ActionCreators, dispatch)
+  const newActionCreators = bindActionCreators({ ...ActionCreators }, dispatch)
+  return {
+    ...newActionCreators,
+    dispatch,
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer)

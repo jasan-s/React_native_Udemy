@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { View, StyleSheet } from 'react-native'
 
 export default function CardSection(props) {
-  const { containerStyle } = styles
+  const { containerstyle } = styles
   return (
-    <View style={[containerStyle, props.style]} >
+    <View style={[containerstyle, props.style]} >
       {props.children}
     </View>
   )
@@ -16,7 +16,7 @@ CardSection.propTypes = {
 }
 
 const styles = StyleSheet.create({
-  containerStyle: {
+  containerstyle: {
     borderBottomWidth: 1,
     padding: 5,
     backgroundColor: '#fff',

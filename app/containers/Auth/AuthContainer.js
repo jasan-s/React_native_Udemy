@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { View, Text, ActivityIndicator } from 'react-native'
+import { View, Text, ActivityIndicator, TouchableOpacity } from 'react-native'
 import { Auth } from '~/components'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -32,6 +32,10 @@ class AuthContainer extends Component {
     this.props.handleUnAuth()
   }
 
+  handleNavigate = (screen, routeParams) => {
+    const { navigate } = this.props.navigation
+    navigate(screen, {...routeParams})
+  }
 
   render() {
     // console.log(this.props.email)
@@ -47,6 +51,16 @@ class AuthContainer extends Component {
           isAuthenticating={this.props.isAuthenticating}
           isAuthed={this.props.isAuthed}
           error={this.props.error} />
+          <TouchableOpacity
+          onPress={ () => this.handleNavigate('library') }
+          style={{
+            padding:20,
+            borderRadius:20,
+            backgroundColor:'yellow',
+            marginTop:20
+          }}>
+          <Text>{'Go to Employee Create'}</Text>
+        </TouchableOpacity>
       </View>
     )
   }

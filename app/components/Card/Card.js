@@ -5,9 +5,9 @@ import CardSection from './Card'
 // import styled from 'styled-components/native'
 
 export default function Card(props) {
-  const { containerStyle } = styles
+  const { containerstyle } = styles
   return (
-    <View style={containerStyle} >
+    <View style={containerstyle} >
       {props.children}
     </View>
   )
@@ -18,7 +18,7 @@ Card.propTypes = {
 }
 
 const styles = StyleSheet.create({
-  containerStyle: {
+  containerstyle: {
     borderWidth: 1,
     borderRadius: 2,
     borderColor: '#ddd',

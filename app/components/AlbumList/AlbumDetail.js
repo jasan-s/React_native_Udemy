@@ -7,13 +7,13 @@ const { height, width } = Dimensions.get('window') // get the device width and h
 
 
 export default function AlbumDetail(props) {
-  const { containerStyle, subContainerStyle, thumbnailImageStyle, albumImageStyle, headerTextStyle } = styles
+  const { containerstyle, subcontainerstyle, thumbnailImageStyle, albumImageStyle, headerTextStyle } = styles
   return (
     <Card >
       <CardSection>
-        <View style={containerStyle}>
+        <View style={containerstyle}>
           <Image source={{ uri: props.album.thumbnail_image }} style={thumbnailImageStyle} />
-          <View style={subContainerStyle}>
+          <View style={subcontainerstyle}>
             <Text style={headerTextStyle}>{props.album.title} </Text>
             <Text >{props.album.artist} </Text>
           </View>
@@ -32,12 +32,12 @@ AlbumDetail.propTypes = {
 }
 
 const styles = StyleSheet.create({
-  containerStyle: {
+  containerstyle: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
-  subContainerStyle: {
+  subcontainerstyle: {
     flexDirection: 'column',
     justifyContent: 'space-around',
     height: 60,

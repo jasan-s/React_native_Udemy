@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { View, StyleSheet, Text, TextInput } from 'react-native'
 
 export default function TextFieldInput(props) {
-  const { containerStyle, textInputStyle, textTitleStyle } = styles
+  const { containerstyle, textInputStyle, textTitleStyle } = styles
   return (
-    <View style={containerStyle}>
+    <View style={containerstyle}>
       <Text style={textTitleStyle} >{props.title}</Text>
       <TextInput
         value={props.value}
@@ -32,7 +32,7 @@ TextFieldInput.defaultProps = {
 }
 
 const styles = StyleSheet.create({
-  containerStyle: {
+  containerstyle: {
     flexDirection: 'row',
     alignItems: 'center',
     // borderWidth: 1,
